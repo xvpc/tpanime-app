@@ -8,7 +8,9 @@ class AppDrawer extends StatelessWidget {
 
   final Uri donateUrl = Uri.parse('https://ko-fi.com/tpanime');
   Future<void> _launchUrl() async {
-    if (!await launchUrl(donateUrl)) {
+    if (await launchUrl(donateUrl)) {
+      await launchUrl(mode: LaunchMode.externalApplication, donateUrl);
+    } else {
       throw Exception('Could not launch $donateUrl');
     }
   }

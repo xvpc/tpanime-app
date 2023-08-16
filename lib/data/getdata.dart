@@ -49,3 +49,18 @@ Future getInfo(String id) async {
     return {"error": err ?? "Something went wrong"};
   }
 }
+
+Future getEpisode(String id) async {
+  Uri url = Uri(
+      scheme: 'https',
+      host: 'tpanime-api.xvpc.workers.dev',
+      path: '/api/episode',
+      queryParameters: {'id': "fullmetal-alchemist-brotherhood-episode-1"});
+  try {
+    var response = await http.get(url, headers: headers);
+    var data = jsonDecode(response.body);
+    return data;
+  } catch (err) {
+    return {"error": err ?? "Something went wrong"};
+  }
+}
