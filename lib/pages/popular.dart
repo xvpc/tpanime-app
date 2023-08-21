@@ -5,6 +5,8 @@ import 'package:tpanime/components/errorMessage.dart';
 //
 import 'package:tpanime/data/getdata.dart';
 import 'package:tpanime/components/container.dart';
+import 'package:tpanime/models/collection/colors.dart';
+import 'package:tpanime/models/collection/dimensions.dart';
 
 class PopularPage extends StatefulWidget {
   const PopularPage({super.key});
@@ -41,9 +43,9 @@ class _PopularPageState extends State<PopularPage> {
               onPressed: () {
                 Navigator.of(context).pushNamed("info");
               },
-              icon: const Icon(
+              icon: Icon(
                 Icons.search,
-                size: 25,
+                size: Dimensions.screenSize3,
                 color: Colors.white,
               ))
         ],
@@ -75,7 +77,7 @@ class _PopularPageState extends State<PopularPage> {
                           behavior: const ScrollBehavior()
                               .copyWith(physics: const ClampingScrollPhysics()),
                           child: GridView.builder(
-                            padding: const EdgeInsets.all(10),
+                            padding: EdgeInsets.all(Dimensions.screenSize1),
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,

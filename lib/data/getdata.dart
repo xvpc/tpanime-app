@@ -55,7 +55,7 @@ Future getEpisode(String id) async {
       scheme: 'https',
       host: 'tpanime-api.xvpc.workers.dev',
       path: '/api/episode',
-      queryParameters: {'id': "fullmetal-alchemist-brotherhood-episode-1"});
+      queryParameters: {'id': id});
   try {
     var response = await http.get(url, headers: headers);
     var data = jsonDecode(response.body);

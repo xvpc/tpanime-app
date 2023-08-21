@@ -5,6 +5,7 @@ import 'package:tpanime/components/errorMessage.dart';
 //
 import 'package:tpanime/data/getdata.dart';
 import 'package:tpanime/components/container.dart';
+import 'package:tpanime/models/collection/dimensions.dart';
 
 class MoviesPage extends StatefulWidget {
   const MoviesPage({super.key});
@@ -40,9 +41,9 @@ class _MoviesPageState extends State<MoviesPage> {
               onPressed: () {
                 Navigator.of(context).pushNamed("movies");
               },
-              icon: const Icon(
+              icon: Icon(
                 Icons.search,
-                size: 25,
+                size: Dimensions.screenSize3,
                 color: Colors.white,
               ))
         ],
@@ -74,7 +75,7 @@ class _MoviesPageState extends State<MoviesPage> {
                           behavior: const ScrollBehavior()
                               .copyWith(physics: const ClampingScrollPhysics()),
                           child: GridView.builder(
-                            padding: const EdgeInsets.all(10),
+                            padding: EdgeInsets.all(Dimensions.screenSize1),
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,

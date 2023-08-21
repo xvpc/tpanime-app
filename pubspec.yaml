@@ -39,6 +39,9 @@ dependencies:
   flutter_pagination: ^0.0.8
   url_launcher: ^6.0.0
   device_apps: ^2.2.0
+  get: ^4.6.5
+  android_intent: ^2.0.0
+  awesome_dialog: ^3.1.0
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tpanime/models/collection/dimensions.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -18,14 +19,15 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 50),
+      padding: EdgeInsets.symmetric(vertical: Dimensions.marginVertical),
       child: Column(
         children: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
             child: Column(children: [
               ListTile(
-                contentPadding: const EdgeInsets.only(left: 10),
+                contentPadding:
+                    EdgeInsets.only(left: Dimensions.screenSize5 / 2),
                 style: ListTileStyle.drawer,
                 titleAlignment: ListTileTitleAlignment.center,
                 leading: Text(
@@ -33,9 +35,9 @@ class AppDrawer extends StatelessWidget {
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
                 trailing: IconButton(
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.close,
-                    size: 28,
+                    size: Dimensions.screenSize3,
                     color: Colors.grey,
                   ),
                   onPressed: () {
@@ -58,7 +60,7 @@ class AppDrawer extends StatelessWidget {
                     const BouncingScrollPhysics(), // Replace with the desired ScrollPhysics
               ),
               child: ListView.separated(
-                itemCount: drawerItems.length ?? 0,
+                itemCount: drawerItems.length,
                 scrollDirection: Axis.vertical,
                 separatorBuilder: (context, index) => const Divider(
                   height: 1,
@@ -92,11 +94,11 @@ class AppDrawer extends StatelessWidget {
                       iconColor: Colors.grey,
                       contentPadding:
                           const EdgeInsets.symmetric(horizontal: 20),
-                      leading: Icon(iconName, size: 20),
+                      leading: Icon(iconName, size: Dimensions.screenSize2),
                       title: Text(
                         '${drawerItems[index]}',
-                        style: const TextStyle(
-                            fontSize: 16,
+                        style: TextStyle(
+                            fontSize: Dimensions.screenSize2,
                             fontWeight: FontWeight.w400,
                             color: Colors.white),
                       ),

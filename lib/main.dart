@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:tpanime/models/collection/colors.dart';
+import 'package:tpanime/models/collection/dimensions.dart';
+import 'package:tpanime/pages/characters.dart';
 import 'package:tpanime/pages/info.dart';
 import 'package:tpanime/pages/movies.dart';
 
@@ -9,25 +13,19 @@ void main() {
   runApp(const MyApp());
 }
 
-Color mainColor = Color.fromARGB(255, 0, 208, 255);
-Color cardColor = Color.fromARGB(180, 0, 0, 0);
-Color hoverColor = Color.fromARGB(144, 140, 202, 219);
-Color borderColor = Color.fromARGB(64, 158, 158, 158);
-// Color shadowColor = Color.fromARGB(176, 0, 0, 0);
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: PopularPage(),
+    return GetMaterialApp(
+      home: const PopularPage(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           useMaterial3: true,
           cardTheme: CardTheme(
               clipBehavior: Clip.antiAliasWithSaveLayer,
-              color: cardColor,
+              color: AppColors.cardColor,
               elevation: 1,
               shadowColor: Colors.black26,
               shape: const RoundedRectangleBorder(
@@ -39,66 +37,66 @@ class MyApp extends StatelessWidget {
           tooltipTheme: const TooltipThemeData(
               decoration: BoxDecoration(color: Colors.black),
               textStyle: TextStyle(color: Colors.white)),
-          primaryColor: mainColor,
-          cardColor: cardColor,
+          primaryColor: AppColors.mainColor,
+          cardColor: AppColors.cardColor,
           colorScheme: ColorScheme(
-              primary: mainColor,
+              primary: AppColors.mainColor,
               background: Colors.black,
               onBackground: Colors.black,
               shadow: Colors.white.withOpacity(0.5),
               brightness: Brightness.dark,
-              onPrimary: const Color.fromARGB(255, 207, 21, 21),
-              secondary: Colors.blueAccent,
-              onSecondary: Colors.white,
-              error: Colors.red,
-              onError: Colors.white,
-              surface: Colors.black,
-              onSurface: Colors.white),
+              onPrimary: AppColors.closeMain,
+              secondary: AppColors.mainColor,
+              onSecondary: AppColors.hoverColor,
+              error: Colors.redAccent.withOpacity(0.5),
+              onError: Colors.red,
+              surface: AppColors.surface,
+              onSurface: AppColors.onSurface),
           textTheme: TextTheme(
               displayLarge: TextStyle(
-                color: mainColor,
-                fontSize: 26,
+                color: AppColors.mainColor,
+                fontSize: Dimensions.screenSize3,
                 fontWeight: FontWeight.w500,
                 overflow: TextOverflow.ellipsis,
               ),
-              titleLarge: const TextStyle(
+              titleLarge: TextStyle(
                 color: Colors.white,
-                fontSize: 20,
+                fontSize: Dimensions.screenSize5,
                 fontWeight: FontWeight.bold,
                 overflow: TextOverflow.ellipsis,
                 shadows: [
                   Shadow(
-                      color: Color.fromARGB(176, 0, 0, 0),
+                      color: AppColors.textShadow,
                       offset: Offset(1, 1),
                       blurRadius: 5.0)
                 ],
               ),
-              titleMedium: const TextStyle(
+              titleMedium: TextStyle(
                   color: Colors.white,
-                  fontSize: 16,
+                  fontSize: Dimensions.screenSize2,
                   fontWeight: FontWeight.w500,
                   overflow: TextOverflow.ellipsis,
                   shadows: [
                     Shadow(
-                        color: Colors.black,
+                        color: AppColors.textShadow,
                         offset: Offset(8, 5),
                         blurRadius: 20.0)
                   ]),
-              titleSmall: const TextStyle(
+              titleSmall: TextStyle(
                 color: Colors.white,
                 fontSize: 12,
                 fontWeight: FontWeight.w300,
                 overflow: TextOverflow.ellipsis,
                 shadows: [
                   Shadow(
-                      color: Colors.black,
+                      color: AppColors.textShadow,
                       offset: Offset(2, 3),
                       blurRadius: 30.0)
                 ],
               ),
-              labelSmall: const TextStyle(
+              labelSmall: TextStyle(
                 color: Colors.white,
-                fontSize: 14,
+                fontSize: Dimensions.screenSize2,
                 fontWeight: FontWeight.w400,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -109,9 +107,9 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 overflow: TextOverflow.ellipsis,
               ),
-              bodySmall: const TextStyle(
+              bodySmall: TextStyle(
                 color: Colors.white,
-                fontSize: 15,
+                fontSize: Dimensions.screenSize2,
                 fontWeight: FontWeight.w400,
                 overflow: TextOverflow.ellipsis,
               ))),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tpanime/data/assetsdata.dart';
+import 'package:tpanime/models/collection/dimensions.dart';
 import 'package:tpanime/pages/info.dart';
 
 class AnimeContainer extends StatelessWidget {
@@ -58,7 +59,7 @@ class AnimeContainer extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(15),
+                padding: EdgeInsets.all(Dimensions.screenSize2),
                 child: Expanded(
                     flex: 1,
                     child: Tooltip(
