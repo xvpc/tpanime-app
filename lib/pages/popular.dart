@@ -77,13 +77,13 @@ class _PopularPageState extends State<PopularPage> {
                           behavior: const ScrollBehavior()
                               .copyWith(physics: const ClampingScrollPhysics()),
                           child: GridView.builder(
-                            padding: EdgeInsets.all(Dimensions.screenSize1),
+                            // padding: EdgeInsets.all(Dimensions.screenSize1),
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
                               crossAxisSpacing: 8,
                               mainAxisSpacing: 15,
-                              mainAxisExtent: 260,
+                              mainAxisExtent: 280,
                             ),
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,

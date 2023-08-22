@@ -1,20 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:tpanime/data/assetsdata.dart';
+import 'package:tpanime/hooks/openlink.dart';
 import 'package:tpanime/models/collection/dimensions.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class AppDrawer extends StatelessWidget {
   AppDrawer({super.key});
   // home, movie, star, casino_outlined
   List drawerItems = ["Home", "Movies", "Popular", "Random"];
-
-  final Uri donateUrl = Uri.parse('https://ko-fi.com/tpanime');
-  Future<void> _launchUrl() async {
-    if (await launchUrl(donateUrl)) {
-      await launchUrl(mode: LaunchMode.externalApplication, donateUrl);
-    } else {
-      throw Exception('Could not launch $donateUrl');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,13 +86,10 @@ class AppDrawer extends StatelessWidget {
                       iconColor: Colors.grey,
                       contentPadding:
                           const EdgeInsets.symmetric(horizontal: 20),
-                      leading: Icon(iconName, size: Dimensions.screenSize2),
+                      leading: Icon(iconName, size: Dimensions.screenSize3),
                       title: Text(
                         '${drawerItems[index]}',
-                        style: TextStyle(
-                            fontSize: Dimensions.screenSize2,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white),
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                     ),
                   );
@@ -109,7 +98,9 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: _launchUrl,
+            onTap: () {
+              openLink(kofiSite);
+            },
             child: Container(
               height: 50,
               decoration: BoxDecoration(

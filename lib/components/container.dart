@@ -24,7 +24,7 @@ class AnimeContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                flex: 4,
+                flex: 7,
                 child: Stack(
                   children: [
                     Positioned(
@@ -58,20 +58,20 @@ class AnimeContainer extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(Dimensions.screenSize2),
-                child: Expanded(
-                    flex: 1,
-                    child: Tooltip(
-                      message:
-                          '${results?["title"]["userPreferred"] ?? results?["title"]["english"] ?? results?["title"]["romaji"] ?? results?["title"]["native"] ?? ""}',
-                      child: Text(
-                          '${results?["title"]["userPreferred"] ?? results?["title"]["english"] ?? results?["title"]["romaji"] ?? results?["title"]["native"] ?? "Unknown"}',
-                          maxLines: 1,
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.titleSmall),
-                    )),
+              const SizedBox(
+                height: 10,
               ),
+              Expanded(
+                  flex: 1,
+                  child: Tooltip(
+                    message:
+                        '${results?["title"]["userPreferred"] ?? results?["title"]["english"] ?? results?["title"]["romaji"] ?? results?["title"]["native"] ?? ""}',
+                    child: Text(
+                        '${results?["title"]["userPreferred"] ?? results?["title"]["english"] ?? results?["title"]["romaji"] ?? results?["title"]["native"] ?? "Unknown"}',
+                        maxLines: 1,
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.titleSmall),
+                  )),
             ],
           ),
         ),

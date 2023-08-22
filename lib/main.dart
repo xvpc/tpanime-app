@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
                 shadows: [
                   Shadow(
                       color: AppColors.textShadow,
-                      offset: Offset(1, 1),
+                      offset: Offset(2, 6),
                       blurRadius: 5.0)
                 ],
               ),
@@ -79,20 +79,14 @@ class MyApp extends StatelessWidget {
                   shadows: [
                     Shadow(
                         color: AppColors.textShadow,
-                        offset: Offset(8, 5),
+                        offset: Offset(2, 2),
                         blurRadius: 20.0)
                   ]),
-              titleSmall: TextStyle(
+              titleSmall: const TextStyle(
                 color: Colors.white,
                 fontSize: 12,
                 fontWeight: FontWeight.w300,
                 overflow: TextOverflow.ellipsis,
-                shadows: [
-                  Shadow(
-                      color: AppColors.textShadow,
-                      offset: Offset(2, 3),
-                      blurRadius: 30.0)
-                ],
               ),
               labelSmall: TextStyle(
                 color: Colors.white,
@@ -113,11 +107,11 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 overflow: TextOverflow.ellipsis,
               ))),
-      initialRoute: 'full',
+      initialRoute: 'popular',
       routes: {
         "popular": (context) => const PopularPage(),
         "movies": (context) => const MoviesPage(),
-        "full": (context) => const InfoPage(infoId: "5114"),
+        // "full": (context) => const InfoPage(infoId: "5114"),
       },
     );
   }
