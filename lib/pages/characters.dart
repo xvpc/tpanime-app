@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tpanime/components/modals/fullscreen.dart';
 import 'package:tpanime/data/assetsdata.dart';
 import 'package:tpanime/hooks/capitalize.dart';
 import 'package:tpanime/models/collection/colors.dart';
@@ -38,24 +39,35 @@ class CharacterPage extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: Dimensions.screenSize4),
-                        height: 300,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          // height: 100,
-                          child: character.image != null
-                              ? FadeInImage.assetNetwork(
-                                  fadeInCurve: Curves.fastLinearToSlowEaseIn,
-                                  placeholder: placeholderImage,
-                                  image: '${character.image}',
-                                  fit: BoxFit.cover,
-                                )
-                              : Image.asset(
-                                  backupImage,
-                                  fit: BoxFit.cover,
-                                ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  FullScreenImage(image: '${character.image}'),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: Dimensions.screenSize4),
+                          height: 300,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            // height: 100,
+                            child: character.image != null
+                                ? FadeInImage.assetNetwork(
+                                    fadeInCurve: Curves.fastLinearToSlowEaseIn,
+                                    placeholder: placeholderImage,
+                                    image: '${character.image}',
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.asset(
+                                    backupImage,
+                                    fit: BoxFit.cover,
+                                  ),
+                          ),
                         ),
                       ),
                       const SizedBox(

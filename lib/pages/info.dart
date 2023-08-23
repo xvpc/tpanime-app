@@ -3,6 +3,7 @@ import 'package:tpanime/components/drawer.dart';
 import 'package:tpanime/components/errorMessage.dart';
 import 'package:tpanime/components/modals/dialog.dart';
 import 'package:tpanime/components/modals/dot.dart';
+import 'package:tpanime/components/modals/fullscreen.dart';
 import 'package:tpanime/data/assetsdata.dart';
 import 'package:tpanime/data/video.dart';
 import 'package:tpanime/hooks/openlink.dart';
@@ -264,20 +265,36 @@ class InfoWidget extends StatelessWidget {
                                                               offset:
                                                                   Offset(4, 10))
                                                         ]),
-                                                    child: FadeInImage
-                                                        .assetNetwork(
-                                                      fadeInCurve: Curves
-                                                          .fastLinearToSlowEaseIn,
-                                                      placeholder:
-                                                          placeholderImage,
-                                                      image: '${data["image"]}',
-                                                      fit: BoxFit.cover,
-                                                      width:
-                                                          Dimensions.imageWidth,
-                                                      placeholderCacheWidth:
-                                                          Dimensions.imageWidth
-                                                              .toInt(),
-                                                      // height: 150,
+                                                    child: GestureDetector(
+                                                      onTap: () {
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                FullScreenImage(
+                                                                    image: data[
+                                                                            "image"]
+                                                                        .toString()),
+                                                          ),
+                                                        );
+                                                      },
+                                                      child: FadeInImage
+                                                          .assetNetwork(
+                                                        fadeInCurve: Curves
+                                                            .fastLinearToSlowEaseIn,
+                                                        placeholder:
+                                                            placeholderImage,
+                                                        image:
+                                                            '${data["image"]}',
+                                                        fit: BoxFit.cover,
+                                                        width: Dimensions
+                                                            .imageWidth,
+                                                        placeholderCacheWidth:
+                                                            Dimensions
+                                                                .imageWidth
+                                                                .toInt(),
+                                                        // height: 150,
+                                                      ),
                                                     ),
                                                   ),
                                                 ),

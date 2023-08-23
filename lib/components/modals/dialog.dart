@@ -12,7 +12,7 @@ void dialog(context, String? text) {
       padding: const EdgeInsets.all(20),
       child: Text(
         text ?? "Something Went wrong!",
-        maxLines: 3,
+        maxLines: 10,
         textAlign: TextAlign.start,
         style: Theme.of(context).textTheme.titleMedium,
       ),
