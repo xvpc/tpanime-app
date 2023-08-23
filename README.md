@@ -1,16 +1,14 @@
 # tpanime
 
-A new Flutter project.
+A new Flutter project that extends from [tpanime.com](https://tpanime.com)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+To download the app for Android (APK) [drive.google.com](https://drive.google.com/file/d/12g1fGRA-ZUeu9NEBgrqFK_i7AxBwAV1T/view?usp=sharing)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The project still not ready for production release yet, 
+so far what we've done is (popular, movies and Info page).
+
+That's it for now!)
