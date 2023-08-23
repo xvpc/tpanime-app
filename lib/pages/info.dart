@@ -181,9 +181,13 @@ class InfoWidget extends StatelessWidget {
                       message: data["error"] ?? "",
                     )
                   : data.isEmpty
-                      ? const Center(
-                          child: CircularProgressIndicator(
-                            color: Colors.lightBlue,
+                      ? const Align(
+                          alignment: Alignment.topCenter,
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 20),
+                            child: CircularProgressIndicator(
+                              color: Colors.lightBlue,
+                            ),
                           ),
                         )
                       : Column(
@@ -219,34 +223,62 @@ class InfoWidget extends StatelessWidget {
                                               ),
                                             )),
                                         Positioned(
-                                            top: Dimensions.screenSize4,
+                                            bottom: 0,
+                                            left: 0,
+                                            right: 0,
+                                            top: 0,
+                                            // height: 100,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                gradient: LinearGradient(
+                                                  colors: [
+                                                    AppColors.kindaBlack,
+                                                    const Color.fromARGB(
+                                                        0, 2, 2, 2),
+                                                  ],
+                                                  begin: Alignment.bottomCenter,
+                                                  end: Alignment.topCenter,
+                                                ),
+                                              ),
+                                              child: const SizedBox(height: 0),
+                                            )),
+                                        Positioned(
+                                            top: 30,
                                             left: 10,
                                             // width: 110,
                                             // height: 150,
                                             // width: double.maxFinite,
                                             child: Row(
                                               children: [
-                                                Container(
-                                                  decoration:
-                                                      const BoxDecoration(
-                                                          boxShadow: [
-                                                        BoxShadow(
-                                                            color: Colors.black,
-                                                            blurRadius: 10.0,
-                                                            offset:
-                                                                Offset(6, 8))
-                                                      ]),
-                                                  child:
-                                                      FadeInImage.assetNetwork(
-                                                    fadeInCurve: Curves
-                                                        .fastLinearToSlowEaseIn,
-                                                    placeholder:
-                                                        placeholderImage,
-                                                    image: '${data["image"]}',
-                                                    fit: BoxFit.cover,
-                                                    width:
-                                                        Dimensions.imageWidth,
-                                                    // height: 150,
+                                                ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  child: Container(
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                            boxShadow: [
+                                                          BoxShadow(
+                                                              color:
+                                                                  Colors.black,
+                                                              blurRadius: 10.0,
+                                                              offset:
+                                                                  Offset(4, 10))
+                                                        ]),
+                                                    child: FadeInImage
+                                                        .assetNetwork(
+                                                      fadeInCurve: Curves
+                                                          .fastLinearToSlowEaseIn,
+                                                      placeholder:
+                                                          placeholderImage,
+                                                      image: '${data["image"]}',
+                                                      fit: BoxFit.cover,
+                                                      width:
+                                                          Dimensions.imageWidth,
+                                                      placeholderCacheWidth:
+                                                          Dimensions.imageWidth
+                                                              .toInt(),
+                                                      // height: 150,
+                                                    ),
                                                   ),
                                                 ),
                                                 Container(
@@ -254,14 +286,81 @@ class InfoWidget extends StatelessWidget {
                                                       Dimensions.bannerHolder,
                                                   padding: EdgeInsets.all(
                                                       Dimensions.screenSize1),
-                                                  child: Text(
-                                                      maxLines: 3,
-                                                      textAlign:
-                                                          TextAlign.start,
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .titleMedium,
-                                                      '${data["title"]?["romaji"] != null ? data["title"]["romaji"] : data["title"]?["english"] != null ? data["title"]["english"] : data["title"]?["native"] != null ? data["title"]["native"] : "Unknown"}'),
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                          maxLines: 2,
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .titleMedium,
+                                                          '${data["title"]?["romaji"] != null ? data["title"]["romaji"] : data["title"]?["english"] != null ? data["title"]["english"] : data["title"]?["native"] != null ? data["title"]["native"] : "Unknown"}'),
+                                                      data["type"] != null
+                                                          ? Text(
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .start,
+                                                              style: TextStyle(
+                                                                color: Colors
+                                                                    .white70,
+                                                                fontWeight: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .titleMedium
+                                                                    ?.fontWeight,
+                                                                fontSize: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .titleMedium
+                                                                    ?.fontSize,
+                                                                overflow: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .titleMedium
+                                                                    ?.overflow,
+                                                              ),
+                                                              '${capitalize(data["type"])}')
+                                                          : const SizedBox(
+                                                              height: 0,
+                                                            ),
+                                                      data["totalEpisodes"] !=
+                                                              null
+                                                          ? Text(
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .start,
+                                                              style: TextStyle(
+                                                                color: Colors
+                                                                    .white70,
+                                                                fontWeight: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .titleMedium
+                                                                    ?.fontWeight,
+                                                                fontSize: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .titleSmall
+                                                                    ?.fontSize,
+                                                                overflow: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .titleSmall
+                                                                    ?.overflow,
+                                                              ),
+                                                              '${data["totalEpisodes"]} Episodes.')
+                                                          : const SizedBox(
+                                                              height: 0,
+                                                            ),
+                                                    ],
+                                                  ),
                                                 )
                                               ],
                                             )),
@@ -366,99 +465,372 @@ class InfoWidget extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            data["status"] != null
-                                                ? Row(children: [
-                                                    Text(
-                                                      "Status: ",
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .titleSmall,
+                                        Container(
+                                          padding: const EdgeInsets.all(20),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: AppColors.blackOverlay,
+                                          ),
+                                          child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceAround,
+                                                  children: [
+                                                    data["rating"] != null
+                                                        ? Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                                Text("Rating ",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontSize: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleSmall
+                                                                          ?.fontSize,
+                                                                      fontWeight: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleMedium
+                                                                          ?.fontWeight,
+                                                                      overflow: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleSmall
+                                                                          ?.overflow,
+                                                                    )),
+                                                                const SizedBox(
+                                                                  height: 5,
+                                                                ),
+                                                                Row(
+                                                                  children: [
+                                                                    Text(
+                                                                        "${(data["rating"].toInt() / 10).toStringAsFixed(1)}/10",
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color:
+                                                                              Colors.grey,
+                                                                          fontSize: Theme.of(context)
+                                                                              .textTheme
+                                                                              .titleSmall
+                                                                              ?.fontSize,
+                                                                          overflow: Theme.of(context)
+                                                                              .textTheme
+                                                                              .titleSmall
+                                                                              ?.overflow,
+                                                                        )),
+                                                                    const SizedBox(
+                                                                      width: 2,
+                                                                    ),
+                                                                    // const Icon(
+                                                                    //   Icons
+                                                                    //       .star,
+                                                                    //   color: Colors
+                                                                    //       .yellowAccent,
+                                                                    //   size: 18,
+                                                                    // ),
+                                                                  ],
+                                                                )
+                                                              ])
+                                                        : const SizedBox(
+                                                            width: 0),
+                                                    const SizedBox(
+                                                      width: 20,
                                                     ),
-                                                    Text("${data["status"]}",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .titleSmall)
-                                                  ])
-                                                : const SizedBox(width: 0),
-                                            const SizedBox(
-                                              width: 20,
-                                            ),
-                                            (data["studios"] != null ||
-                                                    data["studios"]
-                                                        .isNotEmpty())
-                                                ? Row(children: [
-                                                    Text(
-                                                      "Studios: ",
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .titleSmall,
+                                                    data["duration"] != null
+                                                        ? Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                                Text(
+                                                                    "Duration ",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontSize: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleSmall
+                                                                          ?.fontSize,
+                                                                      fontWeight: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleMedium
+                                                                          ?.fontWeight,
+                                                                      overflow: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleSmall
+                                                                          ?.overflow,
+                                                                    )),
+                                                                const SizedBox(
+                                                                  height: 5,
+                                                                ),
+                                                                Text(
+                                                                    "${data["duration"]}:00",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Colors
+                                                                          .grey,
+                                                                      fontSize: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleSmall
+                                                                          ?.fontSize,
+                                                                      overflow: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleSmall
+                                                                          ?.overflow,
+                                                                    ))
+                                                              ])
+                                                        : const SizedBox(
+                                                            width: 0,
+                                                          ),
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  height: 20,
+                                                ),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceAround,
+                                                  children: [
+                                                    data["status"] != null
+                                                        ? Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                                Text("Status ",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontSize: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleSmall
+                                                                          ?.fontSize,
+                                                                      fontWeight: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleMedium
+                                                                          ?.fontWeight,
+                                                                      overflow: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleSmall
+                                                                          ?.overflow,
+                                                                    )),
+                                                                const SizedBox(
+                                                                  height: 5,
+                                                                ),
+                                                                Text(
+                                                                    "${data["status"]}",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Colors
+                                                                          .grey,
+                                                                      fontSize: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleSmall
+                                                                          ?.fontSize,
+                                                                      overflow: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleSmall
+                                                                          ?.overflow,
+                                                                    ))
+                                                              ])
+                                                        : const SizedBox(
+                                                            width: 0),
+                                                    const SizedBox(
+                                                      width: 20,
                                                     ),
-                                                    Text(
-                                                        "${data["studios"]?[0].toUpperCase()}",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .titleSmall)
-                                                  ])
-                                                : const SizedBox(
-                                                    width: 0,
-                                                  ),
-                                          ],
-                                        ),
-                                        const SizedBox(
-                                          height: 20,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Row(children: [
-                                              Text(
-                                                "Start: ",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .titleSmall,
-                                              ),
-                                              data["startDate"] != null ||
-                                                      data["startDate"]
-                                                          .isNotEmpty()
-                                                  ? Text(
-                                                      ' ${data["startDate"]?["month"] ?? "??"}/${data["startDate"]?["day"] ?? "??"}/${data["startDate"]?["year"] ?? "??"}',
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .labelMedium)
-                                                  : Text("Unknown",
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .labelMedium)
-                                            ]),
-                                            SizedBox(
-                                              width: Dimensions.screenSize3,
-                                            ),
-                                            Row(children: [
-                                              Text(
-                                                "End: ",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .titleSmall,
-                                              ),
-                                              data["endDate"] != null ||
-                                                      data["endDate"]
-                                                          .isNotEmpty()
-                                                  ? Text(
-                                                      ' ${data["endDate"]?["month"] ?? "??"}/${data["endDate"]?["day"] ?? "??"}/${data["endDate"]?["year"] ?? "??"} ',
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .labelMedium)
-                                                  : Text(" Unknown ",
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .labelMedium)
-                                            ]),
-                                          ],
+                                                    (data["studios"] != null ||
+                                                            data["studios"]
+                                                                .isNotEmpty())
+                                                        ? Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                                Text("Studios ",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontSize: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleSmall
+                                                                          ?.fontSize,
+                                                                      fontWeight: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleMedium
+                                                                          ?.fontWeight,
+                                                                      overflow: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleSmall
+                                                                          ?.overflow,
+                                                                    )),
+                                                                const SizedBox(
+                                                                  height: 5,
+                                                                ),
+                                                                Text(
+                                                                    "${data["studios"]?[0].toUpperCase()}",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Colors
+                                                                          .grey,
+                                                                      fontSize: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleSmall
+                                                                          ?.fontSize,
+                                                                      overflow: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .titleSmall
+                                                                          ?.overflow,
+                                                                    ))
+                                                              ])
+                                                        : const SizedBox(
+                                                            width: 0,
+                                                          ),
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  height: 20,
+                                                ),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceAround,
+                                                  children: [
+                                                    Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text("Started at ",
+                                                              style: TextStyle(
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .titleSmall
+                                                                    ?.fontSize,
+                                                                fontWeight: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .titleMedium
+                                                                    ?.fontWeight,
+                                                                overflow: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .titleSmall
+                                                                    ?.overflow,
+                                                              )),
+                                                          const SizedBox(
+                                                            height: 5,
+                                                          ),
+                                                          Text(
+                                                              data["startDate"] !=
+                                                                          null ||
+                                                                      data["startDate"]
+                                                                          .isNotEmpty()
+                                                                  ? '${data["startDate"]?["month"] ?? "??"}/${data["startDate"]?["day"] ?? "??"}/${data["startDate"]?["year"] ?? "??"}'
+                                                                  : 'Unknown',
+                                                              style: TextStyle(
+                                                                color:
+                                                                    Colors.grey,
+                                                                fontSize: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .titleSmall
+                                                                    ?.fontSize,
+                                                                overflow: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .titleSmall
+                                                                    ?.overflow,
+                                                              ))
+                                                        ]),
+                                                    SizedBox(
+                                                      width: Dimensions
+                                                          .screenSize3,
+                                                    ),
+                                                    Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text("Ends ",
+                                                              style: TextStyle(
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .titleSmall
+                                                                    ?.fontSize,
+                                                                overflow: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .titleSmall
+                                                                    ?.overflow,
+                                                              )),
+                                                          const SizedBox(
+                                                            height: 5,
+                                                          ),
+                                                          Text(
+                                                              data["endDate"] !=
+                                                                          null ||
+                                                                      data["endDate"]
+                                                                          .isNotEmpty()
+                                                                  ? '${data["endDate"]?["month"] ?? "??"}/${data["endDate"]?["day"] ?? "??"}/${data["endDate"]?["year"] ?? "??"}'
+                                                                  : 'Unknown',
+                                                              style: TextStyle(
+                                                                color:
+                                                                    Colors.grey,
+                                                                fontSize: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .titleSmall
+                                                                    ?.fontSize,
+                                                                fontWeight: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .titleSmall
+                                                                    ?.fontWeight,
+                                                                overflow: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .titleSmall
+                                                                    ?.overflow,
+                                                              ))
+                                                        ]),
+                                                  ],
+                                                )
+                                              ]),
                                         ),
                                         const SizedBox(
                                           height: 30,
@@ -531,41 +903,55 @@ class InfoWidget extends StatelessWidget {
                                                     "youtube" &&
                                                 data["trailer"]["id"] != null)
                                             ? Container(
+                                                // width:
+                                                //     Dimensions.screenWidth,
+                                                height: 270,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal:
                                                         Dimensions.screenSize1),
                                                 decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                      color: Colors.grey,
-                                                      width: 1,
-                                                    ),
-                                                    color: Colors.grey),
-                                                child: InkWell(
-                                                  onTap: () {
-                                                    if (data["trailer"]["id"]
-                                                        is String) {
-                                                      openLink(
-                                                          "https://www.youtube.com/watch?v=${data["trailer"]["id"]}");
-                                                    }
-                                                  },
-                                                  child: data["trailer"]
-                                                              ["thumbnail"] !=
-                                                          null
-                                                      ? FadeInImage
-                                                          .assetNetwork(
-                                                          fadeInCurve: Curves
-                                                              .fastLinearToSlowEaseIn,
-                                                          placeholder:
-                                                              placeholderImage,
-                                                          image:
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            30),
+                                                    image: data["trailer"]
+                                                                ["thumbnail"] !=
+                                                            null
+                                                        ? DecorationImage(
+                                                            fit: BoxFit.cover,
+                                                            image: NetworkImage(
                                                               '${data["trailer"]["thumbnail"]}',
-                                                          fit: BoxFit.cover,
-                                                        )
-                                                      : Image.asset(
-                                                          backupImage,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                ))
+                                                            ))
+                                                        : DecorationImage(
+                                                            fit: BoxFit.cover,
+                                                            image: AssetImage(
+                                                              backupImage,
+                                                            ))),
+                                                child: InkWell(
+                                                    onTap: () {
+                                                      if (data["trailer"]["id"]
+                                                          is String) {
+                                                        openLink(
+                                                            "https://www.youtube.com/watch?v=${data["trailer"]["id"]}");
+                                                      }
+                                                    },
+                                                    child: Center(
+                                                        child: Container(
+                                                      height: 50,
+                                                      width: 50,
+                                                      alignment:
+                                                          Alignment.center,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(25),
+                                                          color: AppColors
+                                                              .blackOverlay),
+                                                      child: const Icon(
+                                                        Icons.play_arrow,
+                                                        color: Colors.white,
+                                                        size: 28,
+                                                      ),
+                                                    ))))
                                             : const SizedBox(
                                                 height: 0,
                                               ),
