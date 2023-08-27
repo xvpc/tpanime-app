@@ -11,4 +11,6 @@ To download the app for Android (APK) [drive.google.com](https://drive.google.co
 The project still not ready for production release yet, 
 so far what we've done is (popular, movies and Info page).
 
+Note: Gonna be Adding the app to the official side soon.
+
 That's it for now!)
