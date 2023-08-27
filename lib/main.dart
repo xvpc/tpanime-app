@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:tpanime/models/collection/colors.dart';
 import 'package:tpanime/models/collection/dimensions.dart';
-import 'package:tpanime/pages/characters.dart';
-import 'package:tpanime/pages/info.dart';
+import 'package:tpanime/pages/home.dart';
 import 'package:tpanime/pages/movies.dart';
 
 // Pages
@@ -107,8 +106,9 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 overflow: TextOverflow.ellipsis,
               ))),
-      initialRoute: 'popular',
+      initialRoute: 'home',
       routes: {
+        "home": (context) => const HomePage(),
         "popular": (context) => const PopularPage(),
         "movies": (context) => const MoviesPage(),
         // "full": (context) => const InfoPage(infoId: "5114"),

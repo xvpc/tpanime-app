@@ -6,6 +6,7 @@ import 'package:tpanime/components/errorMessage.dart';
 import 'package:tpanime/data/getdata.dart';
 import 'package:tpanime/components/container.dart';
 import 'package:tpanime/models/collection/dimensions.dart';
+import 'package:tpanime/pages/search.dart';
 
 class MoviesPage extends StatefulWidget {
   const MoviesPage({super.key});
@@ -39,7 +40,8 @@ class _MoviesPageState extends State<MoviesPage> {
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.of(context).pushNamed("movies");
+                // Navigator.of(context).pushNamed("movies");
+                showSearch(context: context, delegate: DataSearch());
               },
               icon: Icon(
                 Icons.search,
@@ -47,14 +49,14 @@ class _MoviesPageState extends State<MoviesPage> {
                 color: Colors.white,
               ))
         ],
-        elevation: 2,
+        elevation: 0.2,
         shadowColor: Colors.white,
       ),
       drawer: Drawer(
         child: AppDrawer(),
       ),
       body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
           // height: double.infinity,
           // width: double.infinity,
           child: data["error"] != null
@@ -68,9 +70,9 @@ class _MoviesPageState extends State<MoviesPage> {
                       ),
                     )
                   : data["results"] == null || data["results"].isEmpty
-                      ? const Center(
+                      ? Center(
                           child: Icon(Icons.filter_list_off_outlined,
-                              color: Colors.grey, size: 32))
+                              color: Colors.grey, size: Dimensions.screenSize4))
                       : ScrollConfiguration(
                           behavior: const ScrollBehavior()
                               .copyWith(physics: const ClampingScrollPhysics()),

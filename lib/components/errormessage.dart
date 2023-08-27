@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tpanime/models/collection/dimensions.dart';
 
 class ErrorMessage extends StatelessWidget {
   final message;
@@ -10,7 +11,8 @@ class ErrorMessage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(Icons.error_outline, color: Colors.grey, size: 50),
+          Icon(Icons.error_outline,
+              color: Colors.grey, size: Dimensions.screenSize4),
           const SizedBox(
             height: 12,
           ),

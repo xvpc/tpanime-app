@@ -8,18 +8,18 @@ import 'package:tpanime/components/container.dart';
 import 'package:tpanime/models/collection/dimensions.dart';
 import 'package:tpanime/pages/search.dart';
 
-class PopularPage extends StatefulWidget {
-  const PopularPage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<PopularPage> createState() => _PopularPageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _PopularPageState extends State<PopularPage> {
+class _HomePageState extends State<HomePage> {
   Map<String, dynamic> data = {};
 
-  Future popular() async {
-    var temp = await getPopularAnime();
+  Future trending() async {
+    var temp = await getTrending();
     setState(() {
       data = temp;
     });
@@ -28,7 +28,7 @@ class _PopularPageState extends State<PopularPage> {
 
   @override
   void initState() {
-    popular();
+    trending();
     super.initState();
   }
 
@@ -36,8 +36,8 @@ class _PopularPageState extends State<PopularPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Popular Anime",
-            style: Theme.of(context).textTheme.titleLarge),
+        title:
+            Text("Trending Now", style: Theme.of(context).textTheme.titleLarge),
         actions: [
           IconButton(
               onPressed: () {
@@ -57,7 +57,8 @@ class _PopularPageState extends State<PopularPage> {
         child: AppDrawer(),
       ),
       body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+          padding: EdgeInsets.symmetric(
+              horizontal: Dimensions.screenSize1, vertical: 10),
           // height: double.infinity,
           // width: double.infinity,
           child: data["error"] != null

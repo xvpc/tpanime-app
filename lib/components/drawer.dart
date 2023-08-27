@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tpanime/data/assetsdata.dart';
 import 'package:tpanime/hooks/openlink.dart';
+import 'package:tpanime/models/collection/colors.dart';
 import 'package:tpanime/models/collection/dimensions.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -15,7 +16,8 @@ class AppDrawer extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+            padding: EdgeInsets.symmetric(
+                horizontal: Dimensions.screenSize2, vertical: 0),
             child: Column(children: [
               ListTile(
                 contentPadding:
@@ -37,10 +39,10 @@ class AppDrawer extends StatelessWidget {
                   },
                 ),
               ),
-              const Divider(
+              Divider(
                 height: 1,
-                thickness: 1,
-                color: Colors.grey,
+                thickness: 0.4,
+                color: AppColors.overlay,
               )
             ]),
           ),

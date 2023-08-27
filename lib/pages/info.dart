@@ -16,6 +16,7 @@ import 'package:tpanime/hooks/capitalize.dart';
 import 'package:tpanime/hooks/filtertext.dart';
 import 'package:tpanime/models/types.dart';
 import 'package:tpanime/pages/characters.dart';
+import 'package:tpanime/pages/search.dart';
 
 class InfoPage extends StatefulWidget {
   final String infoId;
@@ -59,7 +60,8 @@ class _InfoPageState extends State<InfoPage> {
               actions: [
                 IconButton(
                     onPressed: () {
-                      Navigator.of(context).pushNamed("popular");
+                      // Navigator.of(context).pushNamed("popular");
+                      showSearch(context: context, delegate: DataSearch());
                     },
                     icon: Icon(
                       Icons.search,
@@ -67,7 +69,7 @@ class _InfoPageState extends State<InfoPage> {
                       color: Colors.white,
                     ))
               ],
-              elevation: 2,
+              elevation: 0.2,
               shadowColor: Colors.white,
               bottom: TabBar(
                 isScrollable: true,
@@ -399,8 +401,8 @@ class InfoWidget extends StatelessWidget {
                                             padding: EdgeInsets.all(
                                                 Dimensions.screenSize2),
                                             decoration: BoxDecoration(
-                                                border: Border.symmetric(
-                                              horizontal: BorderSide(
+                                                border: Border(
+                                              bottom: BorderSide(
                                                 color: AppColors.borderColor,
                                                 width: 1,
                                               ),

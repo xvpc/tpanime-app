@@ -38,20 +38,21 @@ class _FullScreenImageState extends State<FullScreenImage> {
         ],
       ),
       body: Container(
-        alignment: Alignment.center,
-        width: double.infinity,
-        height: double.infinity,
-        child: image == backupImage
-            ? Image.asset(
-                "${backupImage}",
-                fit: BoxFit.cover,
-              )
-            : Image.network(
-                "${image}",
-                fit: BoxFit.cover,
-                width: double.maxFinite,
-              ),
-      ),
+          alignment: Alignment.center,
+          width: double.infinity,
+          height: double.infinity,
+          child: InteractiveViewer(
+            child: image == backupImage
+                ? Image.asset(
+                    "${backupImage}",
+                    fit: BoxFit.cover,
+                  )
+                : Image.network(
+                    "${image}",
+                    fit: BoxFit.cover,
+                    width: double.maxFinite,
+                  ),
+          )),
     );
   }
 }

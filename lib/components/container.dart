@@ -18,6 +18,7 @@ class AnimeContainer extends StatelessWidget {
                 )));
       },
       child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: Container(
           // height: 800,
           child: Column(
@@ -64,10 +65,11 @@ class AnimeContainer extends StatelessWidget {
               Expanded(
                   flex: 1,
                   child: Tooltip(
+                    padding: EdgeInsets.all(Dimensions.screenSize1),
                     message:
                         '${results?["title"]["userPreferred"] ?? results?["title"]["english"] ?? results?["title"]["romaji"] ?? results?["title"]["native"] ?? ""}',
                     child: Text(
-                        '${results?["title"]["userPreferred"] ?? results?["title"]["english"] ?? results?["title"]["romaji"] ?? results?["title"]["native"] ?? "Unknown"}',
+                        ' ${results?["title"]["userPreferred"] ?? results?["title"]["english"] ?? results?["title"]["romaji"] ?? results?["title"]["native"] ?? "Unknown"} ',
                         maxLines: 1,
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.titleSmall),
